@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ES6 | sarizadeh</title>
+  </head>
+  <body>
+
+    <button onclick="console.log(x);">click here!</button>
+    <button onclick="alert(window.x);">click here x</button>
+
+    <script>
+      /********** Global && Local **********/
+      var x = 10; // global scope
+      test(); // callback function
+
+      /* define function global scope */
+      function test(){
+        var y = 15; // local scope
+
+        console.log(x); // print 10
+      }
+
+      test(); // callback function
+      // console.log(y); // Uncaught ReferenceError: y is not defined
+
+
+
+      /********** Block Scope **********/
+
+      {
+        var xx = 33;
+        console.log("xx is: " + xx); // xx is: 33
+      }
+      console.log("xx is: "); // xx is:
+
+      /********** Hiosted concept **********/
+
+      console.log(testVar); // undefined
+      testFunc(); // func is Hoisted
+
+      var testVar = "var is Hoisted";
+      function testFunc(){
+        console.log("func is Hoisted")
+      }
+
+      /********** let **********/
+      //console.log(testLet); // Uncaught ReferenceError: Cannot access 'testLet' before initialization
+      let testLet = 100;
+      // let testLet = 200; // Uncaught SyntaxError: Identifier 'testLet' has already been declared
+
+      function testFunc2(){
+        let testLet = 300;
+        console.log(testLet);
+      }
+
+      testFunc2(); // print 300
+      console.log(testLet); // print 100
+    </script>
+  </body>
+</html>
